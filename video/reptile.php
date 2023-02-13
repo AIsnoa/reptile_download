@@ -1,11 +1,10 @@
 <?php
-
 	$handle = fopen("download_list.txt",'a+');
 	$ret = fwrite($handle,"七龙珠".PHP_EOL);
 	if(!$ret){
 		echo $data."write fail!";
 	}	
-	$episode = 2;
+	$episode = 1;
 	
 	while($episode <= 153){
 		$time1 = microtime(true);
@@ -14,9 +13,9 @@
 		$url = "https://www.guaguo.cc/a/122065-0-".strval($address_number).".html";    //第1集的地址
 		$pattern = "/<script>.*.<\/script>/";
 		$result = [];
-		$content = file_get_contents($url);
-		echo $content;
-	break;	
+		$curl_shell = "curl ".$url;	
+		//$content = file_get_contents($url);
+		$content = shell_exec($curl_shell);	
 		$ret = preg_match_all($pattern,$content,$result);
 
 
