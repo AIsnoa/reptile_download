@@ -14,13 +14,13 @@
 		$episode = mb_substr($temp3,1,NULL,'UTF-8');
 		$file_name = "Dargon_Ball_" . $episode;  //文件名
 		//下载控制模块	
-		if(intval($episode)<=30){
+		if(intval($episode)<=31){
 			continue;
 		}
-		if(intval($episode)>31){
+		if(intval($episode)>35){
 			break;
 		}
-		echo $episode.PHP_EOL;
+		echo "正在下载:". $episode."集".PHP_EOL;
 	
 
 		$url = " ".$temp2." ";		
@@ -31,8 +31,8 @@
 		//$download_str1 = "ffmpeg -i" . $url . "-c copy -bsf:a aac_adtstoasc" ." video/". $file_name . ".mp4"; 
 		
 		#用go可执行程序下载的指令。
-		$go_download_pwd = "/home/lianjie/Reptile_Download/bin/m3u8d";
-		$content_save_pwd = "/home/lianjie/Reptile_Download/video/";
+		$go_download_pwd = "/home/lianjie/test/mygithub/reptile_download/bin/m3u8d";
+		$content_save_pwd = "/home/lianjie/test/mygithub/reptile_download/video/";
 		$download_str2 = "/".$go_download_pwd." download -u".$url."-d ".$content_save_pwd.$file_name;
 		//echo $download_str2;
 		$output = shell_exec($download_str2);
